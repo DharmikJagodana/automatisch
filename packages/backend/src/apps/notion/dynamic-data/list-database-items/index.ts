@@ -1,31 +1,12 @@
 import { IGlobalVariable, IJSONObject } from '@automatisch/types';
 
-type Database = {
-  id: string;
-  name: string;
-  title: [
-    {
-      plain_text: string;
-    }
-  ];
-};
-
-type ResponseData = {
-  results: Database[];
-  next_cursor?: string;
-};
-
 type Payload = {
-  filter: {
-    value: 'database';
-    property: 'object';
-  };
   start_cursor?: string;
 };
 
 export default {
-  name: 'List databases',
-  key: 'listDatabases',
+  name: 'List database items',
+  key: 'listDatabaseItems',
 
   async run($: IGlobalVariable) {
     const databases: {
@@ -36,21 +17,27 @@ export default {
       error: null,
     };
     const payload: Payload = {
-      filter: {
-        value: 'database',
-        property: 'object',
-      },
+      start_cursor: undefined as unknown as string,
     };
+    const databaseId = $.step.parameters.databaseId as string;
+
+    if (!databaseId) {
+      return databases;
+    }
 
     do {
-      const response = await $.http.post<ResponseData>('/v1/search', payload);
+      const response = await $.http.post(
+        `/v1/databases/${databaseId}/query`,
+        payload
+      );
 
       payload.start_cursor = response.data.next_cursor;
 
       for (const database of response.data.results) {
         databases.data.push({
           value: database.id as string,
-          name: database.title?.[0]?.plain_text || 'Untitled Database',
+          name:
+            database.properties.Name?.title?.[0]?.plain_text || 'Untitled Page',
         });
       }
     } while (payload.start_cursor);
