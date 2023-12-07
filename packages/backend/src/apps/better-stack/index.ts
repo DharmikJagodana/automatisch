@@ -1,6 +1,7 @@
 import defineApp from '../../helpers/define-app';
 import addAuthHeader from './common/add-auth-header';
 import auth from './auth';
+import actions from './actions';
 
 export default defineApp({
   name: 'Better Stack',
@@ -13,4 +14,5 @@ export default defineApp({
   primaryColor: '000000',
   beforeRequest: [addAuthHeader],
   auth,
+  actions,
 });
