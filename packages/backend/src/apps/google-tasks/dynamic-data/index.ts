@@ -1,3 +1,4 @@
 import listTaskLists from './list-task-lists';
+import listTasks from './list-tasks';
 
-export default [listTaskLists];
+export default [listTaskLists, listTasks];
