@@ -10995,13 +10995,6 @@ msgpackr-extract@^2.1.2:
     "@msgpackr-extract/msgpackr-extract-linux-x64" "2.1.2"
     "@msgpackr-extract/msgpackr-extract-win32-x64" "2.1.2"
 
-msgpackr@^1.5.2, msgpackr@^1.6.2:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/msgpackr/-/msgpackr-1.7.2.tgz#68d6debf5999d6b61abb6e7046a689991ebf7261"
-  integrity sha512-mWScyHTtG6TjivXX9vfIy2nBtRupaiAj0HQ2mtmpmYujAmqZmaaEVPaSZ1NKLMvicaMLFzEaMk0ManxMRg8rMQ==
-  optionalDependencies:
-    msgpackr-extract "^2.1.2"
-
 multicast-dns@^7.2.5:
   version "7.2.5"
   resolved "https://registry.yarnpkg.com/multicast-dns/-/multicast-dns-7.2.5.tgz#77eb46057f4d7adbd16d9290fa7299f6fa64cced"
