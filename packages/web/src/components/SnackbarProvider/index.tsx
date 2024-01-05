@@ -3,8 +3,17 @@ import {
   SnackbarProvider as BaseSnackbarProvider,
   SnackbarProviderProps,
 } from 'notistack';
+import { css } from '@emotion/css';
+import { useTheme } from '@mui/material/styles';
 
 const SnackbarProvider = (props: SnackbarProviderProps): React.ReactElement => {
+  const theme = useTheme();
+  const classes = {
+    zIndexOverwrite: css({
+      zIndex: theme.zIndex.snackbar,
+    }),
+  };
+
   return (
     <BaseSnackbarProvider
       {...props}
@@ -13,6 +22,7 @@ const SnackbarProvider = (props: SnackbarProviderProps): React.ReactElement => {
         horizontal: 'right',
       }}
       dense
+      classes={{ containerRoot: classes.zIndexOverwrite }}
     />
   );
 };

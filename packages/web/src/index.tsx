@@ -14,23 +14,22 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <Router>
-    <SnackbarProvider>
-      <AuthenticationProvider>
-        <ApolloProvider>
-          <AutomatischInfoProvider>
-            <IntlProvider>
-              <ThemeProvider>
+    <AuthenticationProvider>
+      <ApolloProvider>
+        <AutomatischInfoProvider>
+          <IntlProvider>
+            <ThemeProvider>
+              <SnackbarProvider>
                 <MetadataProvider>
                   {routes}
-
                   <LiveChat />
                 </MetadataProvider>
-              </ThemeProvider>
-            </IntlProvider>
-          </AutomatischInfoProvider>
-        </ApolloProvider>
-      </AuthenticationProvider>
-    </SnackbarProvider>
+              </SnackbarProvider>
+            </ThemeProvider>
+          </IntlProvider>
+        </AutomatischInfoProvider>
+      </ApolloProvider>
+    </AuthenticationProvider>
   </Router>,
   document.getElementById('root')
 );

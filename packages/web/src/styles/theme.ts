@@ -162,6 +162,10 @@ export const defaultTheme = createTheme({
       },
     },
   },
+  zIndex: {
+    // z-index must be bigger than chatbot's icon
+    snackbar: 2200000000,
+  },
   components: {
     MuiAppBar: {
       styleOverrides: {
@@ -282,24 +286,26 @@ export const defaultTheme = createTheme({
   },
 });
 
-export const mationTheme = createTheme(deepmerge(defaultTheme, {
-  palette: {
-    primary: {
-      main: '#2962FF',
-      light: '#448AFF',
-      dark: '#2962FF',
-      contrastText: '#fff',
-    },
-  },
-  components: {
-    MuiAppBar: {
-      styleOverrides: {
-        root: ({ theme }: { theme: Theme }) => ({
-          zIndex: theme.zIndex.drawer + 1,
-        }),
+export const mationTheme = createTheme(
+  deepmerge(defaultTheme, {
+    palette: {
+      primary: {
+        main: '#2962FF',
+        light: '#448AFF',
+        dark: '#2962FF',
+        contrastText: '#fff',
       },
     },
-  },
-}));
+    components: {
+      MuiAppBar: {
+        styleOverrides: {
+          root: ({ theme }: { theme: Theme }) => ({
+            zIndex: theme.zIndex.drawer + 1,
+          }),
+        },
+      },
+    },
+  })
+);
 
 export default defaultTheme;
