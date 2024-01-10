@@ -26,6 +26,7 @@ const verifyCredentials = async ($: IGlobalVariable) => {
 
   await $.auth.set({
     screenName: `${response.data.result?.first_name} ${response.data.result?.last_name}`,
+    userId: response.data.result?.id,
     sessionName: result.result.sessionName,
   });
 };
